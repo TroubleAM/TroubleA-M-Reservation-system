@@ -4,6 +4,7 @@ angular.module('app')
     $scope.doctors;
     $scope.currentDoctor;
     $scope.timeA;
+    $scope.replies=[];
 // load the doctors informations from the database 
     $scope.loadPage=function (){
       $.ajax({
@@ -93,6 +94,27 @@ angular.module('app')
         }
       })
     };
+    $scope.getReplies=function(){
+    //function which take the name from the client and post his replies
+      var name= $('#name').val(); 
+      var doctors=$scope.doctors;
+      for(var i=0; i<doctors.length;i++){
+        var point=doctors[i].reservedAppointments;
+        for(var j=0;j<point.length ;j++){
+          if(point[j].patientName===name){
+              var reply={
+                patientName: point[j].patientName,
+                patientCase: point[j].patientCase,
+                availableAppointments: point[j].availableAppointments,
+                reply: point[j].reply,
+                username: doctors[i].username
+              };
+              $scope.replies.push(reply);
+          }
+        }
+      }
+      console.log($scope.replies)
+    }
  })
  .component('main', {
   controller:"AppCtrl",

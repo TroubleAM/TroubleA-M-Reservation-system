@@ -1,4 +1,70 @@
-<input type="text" ng-model="search" placeholder="write data">
+<!-- Reply Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Doctor replies on your cases</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <input type="text" id="name" placeholder="Put your name here">
+<style type="text/css">
+        input[type=text] {
+          width: 200px;
+          height: 20px;
+          -webkit-transition: width 0.4s ease-in-out;
+          transition: width 0.4s ease-in-out;
+          }
+
+        input[type=text]:focus {
+        width: 25%;
+        }
+      </style>
+      </div>
+      <div class="modal-body" ng-repeat="reply in replies">
+        <ul>
+          <label>Doctor name: {{reply.username}}</label>
+          <br><label>Appointment at: {{reply.availableAppointments.date}} , {{reply.availableAppointments.time}}</label>
+          <br><label>Your case: {{reply.patientCase}}</label>
+          <br><label>Your reply: {{reply.reply}}</label>
+          <br>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="getReplies()" ng-init="loadPage()">Get replies</button>
+      </div>
+    </div>
+  </div>
+</div>
+<center>
+    <strong><input type="text" ng-model="search" placeholder="Search on your doctor ....."></strong>
+    <br>
+    <br>
+    <!-- Reply button it is here for complete the style when press on it will show the above div -->
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+      Get replies from doctors
+    </button>
+      <style type="text/css">
+        input[type=text] {
+          width: 200px;
+          height: 50px;
+          -webkit-transition: width 0.4s ease-in-out;
+          transition: width 0.4s ease-in-out;
+          }
+
+  /* When the input field gets focus, change its width to 100% */
+        input[type=text]:focus {
+        width: 100%;
+        }
+        #doctorsDiv{
+    opacity: 0.7;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+        }
+      </style>
+</center>
+<br>
+<br>
 <div id="mainpage" ng-controller="AppCtrl" ng-init="loadPage()">
    <div style="margin-left: 2em">
       <div ng-show="true" class="media well well-fuild col-lg-6 col-lg-offset-3 col-md-6 col-sm-12" ng-repeat="doctor in doctors |filter:search">
@@ -6,7 +72,7 @@
             <div class="media-left">
                <img ng-src="{{'/uploads/' + doctor.image}}" class="media-object" style="width:80px" data-toggle="modal" data-target="#myAppointments" ng-click="getDoctorData(doctor.username)"/>
             </div>
-            <div class="media-body">
+            <div id="doctorsDiv" class="media-body">
                <h1 class="media-heading">Doctor: {{doctor.username}}</h1>
                <h4>
                   Phone: {{doctor.phoneNumber}}
