@@ -1,0 +1,23 @@
+|      URL             | HTTP Verb | Request Body |                         Result                          |
+|:--------------------:|:---------:|:------------:|:-------------------------------------------------------:|
+| /newAdmin            |    POST   |    JSON      |            Create new admin* and return user created    |
+| /getAppointments     |    GET    |    empty     |                                Return JSON of all users |
+| /reserveAppointment  |    POST   |    JSON      |                        reserve an available appointment |
+| /createAppointments  |    POST   |    JSON      |                                 create new appointments |
+
+
+availableAppointments =
+ [
+    {
+      time:
+    }
+ ];
+
+reservedAppointments =
+[
+  {
+    time: ,
+    patientName: ,
+    patientPhone:
+  }
+]

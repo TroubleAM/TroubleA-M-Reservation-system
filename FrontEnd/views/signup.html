@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>We care</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+
+     body{
+      background-image: url('https://theinnovationenterprise.com/media/W1siZiIsImltYWdlcy93ZWItYmFja2dyb3VuZC1oZWFsdGgtZWRpdC5wbmciXV0/web-background-health-edit.png?sha=3d7f305a5528a06f');
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/index">We Care</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/index">Home</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div>
+      </nav>
+      <main></main>
+<div ng-controller="singupCtrl">
+<div class="container well col-lg-6 col-lg-offset-3">
+<div class="center-block">
+
+  <div class="page-header">
+        <div class="page-header text-center">
+    <h1><small style="font-family:Open Sans; font-weight:bold; color:#555;">Please Fill your information here </small></h1>
+  </div>
+  <form action="/signup" method="post" class="form-horizontal" enctype="multipart/form-data">
+      <div class="form-group">
+        <!-- <label for="Username" class="control-label col-md-3" >User Name</label> -->
+        <div class=" col-md-6 col-lg-offset-3">
+        <div class="input-group">
+          <div class="input-group-addon"><div class="glyphicon glyphicon-user"></div></div>
+          <input type="text" ng-model="username" name="username" placeholder="User Name" class="form-control" required="required">
+        </div>
+        </div>
+      </div>
+
+          <div class="form-group">
+          <!-- <label class="control-label col-md-3">Password: </label> -->
+          <div class="col-md-6 col-lg-offset-3">
+          <div class="input-group">
+          <div class="input-group-addon"><div class="glyphicon glyphicon-lock"></div></div>
+          <input type="password" ng-model="password" name="password" placeholder="Password" class="form-control" required="required">
+
+            </div>
+          </div>
+          </div>
+              <div class="form-group">
+          <!-- <label class="control-label col-md-3">Phone : </label> -->
+          <div class="col-md-6 col-lg-offset-3">
+          <div class="input-group">
+          <div class="input-group-addon"><div class="glyphicon glyphicon-earphone"></div></div>
+          <input type="Number" ng-name="phoneNumber" name="phoneNumber" placeholder="Phone Number." class="form-control" required="required">
+
+            </div>
+          </div>
+          </div>
+          <div class="form-group">
+          <!-- <label class="control-label col-md-3">specilization : </label> -->
+          <div class="col-md-6 col-lg-offset-3">
+          <div class="input-group">
+          <div class="input-group-addon"><div class="glyphicon glyphicon-asterisk"></div></div>
+          <input type="text" ng-name="specilization" name="specilization" placeholder="Your specilization here" class="form-control" >
+          <input type="file" name="myImage"  />
+            </div>
+          </div>
+          </div>
+
+                <div class="form-group">
+        <!-- <label for="Username" class="control-label col-md-3" >User Name</label> -->
+        <div class=" col-md-6 col-lg-offset-3">
+        <div class="input-group">
+          <div class="input-group-addon"><div class="glyphicon glyphicon-user"></div></div>
+          <input type="text" ng-model="location" name="location" placeholder="Location" class="form-control" required="required">
+        </div>
+        </div>
+      </div>
+
+      
+
+
+          <!-- last clone -->
+      <div class="form-group">
+        <div class="col-md-6 col-md-offset-3 text-center">
+          <button type="submit" class="btn btn-danger btn-block" data-dismiss="modal">Submit</button>
+        </div>
+      </div>
+  </form>
+</div>
+</div>
+</div>
+
+
+   </body>
+</html>

@@ -1,0 +1,21 @@
+<span ng-controller="navBar" ng-init="checkIsLoggedIn()">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/index">We Care</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/index">Home</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li ng-if="!isLoggedIn"><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li ng-if="!isLoggedIn"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li ng-if="isLoggedIn"><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<br><br><br>
+<main ng-show="!isLoggedIn" ng-hide="isLoggedIn"></main>
+<admin ng-show="isLoggedIn" ng-hide="!isLoggedIn"></admin>
+</span>

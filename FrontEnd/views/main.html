@@ -1,0 +1,87 @@
+<input type="text" ng-model="search" placeholder="write data">
+<div id="mainpage" ng-controller="AppCtrl" ng-init="loadPage()">
+   <div style="margin-left: 2em">
+      <div ng-show="true" class="media well well-fuild col-lg-6 col-lg-offset-3 col-md-6 col-sm-12" ng-repeat="doctor in doctors |filter:search">
+         <div class="media-left media-top">
+            <div class="media-left">
+               <img ng-src="{{'/uploads/' + doctor.image}}" class="media-object" style="width:80px" data-toggle="modal" data-target="#myAppointments" ng-click="getDoctorData(doctor.username)"/>
+            </div>
+            <div class="media-body">
+               <h1 class="media-heading">Doctor: {{doctor.username}}</h1>
+               <h4>
+                  Phone: {{doctor.phoneNumber}}
+               </h4>
+               <h4>
+                  Specialization: {{doctor.specilization}}
+               </h4>
+               <h4>
+                  Location: {{doctor.location}}
+               </h4>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Modal addAppointments -->
+   <!-- <div id="appointmentModal"></div> -->
+   <!-- ng-init="getDoctorData('admin')" -->
+   <div class="modal fade" id="myAppointments" role="dialog">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-body">
+           <div class="media-left media-top">
+             <div class="media-left">
+               <img ng-src="{{'/uploads/' + currentDoctor.image}}" class="media-object" style="width:80px" data-toggle="modal" data-target="#myAppointments"/>
+             </div>
+             <div class="media-body">
+               <h1 class="media-heading">Doctor: {{currentDoctor.username}}</h1>
+               <p>
+                 Phone: {{currentDoctor.phoneNumber}}
+               </p>
+               <p>
+                 Specialization: {{currentDoctor.specilization}}
+               </p>
+               <p>
+                 Location: {{currentDoctor.location}}
+               </p>
+               <div class="row">
+                 <div class="col-lg-8">
+                   <label>Appointments</label>
+                   <select class="selectpicker" ng-model="timeA" ng-change="selectedValue()"><option ng-repeat="app in currentDoctor.availableAppointments">{{app.time}} {{app.date}}</option></select>
+                   <div class="form-group">
+                     <label for="usr">Name:</label> <input id="pName"
+                     type="text" ng-model="nameVal" class=
+                     "form-control" required="required"/>
+                   </div>
+                   <div class="form-group">
+                     <label for="pwd">Phone:</label> <input id="pPhon"
+                     type="text" class="form-control" ng-model=
+                     "phoneVal" required="required"/>
+                   </div>
+                   <br />
+                   <div class="form-group">
+                     <label for="pwd">Your case:</label> <input id="pcase"
+                     type="text" class="form-control" ng-model=
+                     "caseVal"/>
+                   </div>
+                   <br />
+                   <!-- <span id="doctorName"><font color=
+                   "white">{{doctor.name}}</font></span> -->
+                   <div class="modal-footer">
+                     <button type="submit" class="btn btn-success" ng-click="reserveAppointment(timeVal)" data-dismiss="modal">Submit</button>
+                     <button data-target="#addReview" class="btn btn-success" data-dismiss="modal" data-toggle="modal" id="addReviewButt" ng-click="sendReview(currentDoctor.username)">Add review</button>
+                   </div>
+
+                   <div class="form-group" id="addReview" role="dialog">
+                      <label for="comment">If you have feedback you can add it here:</label>
+                      <textarea class="form-control" rows="5" id="review"></textarea>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+   <!-- </div><button ng-click="loadPage()" class="btn btn-danger">GetDoctors</button></div> -->
+</div>

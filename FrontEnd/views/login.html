@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>We care</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+
+     body{
+      background-image: url('https://theinnovationenterprise.com/media/W1siZiIsImltYWdlcy93ZWItYmFja2dyb3VuZC1oZWFsdGgtZWRpdC5wbmciXV0/web-background-health-edit.png?sha=3d7f305a5528a06f');
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/index">We Care</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/index">Home</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div>
+      </nav>
+
+<div ng-controller="loginCtrl">
+  <div class="container well col-lg-4 col-lg-offset-4">
+      <div class="page-header text-center">
+        <h1><meduim style="font-family:Open Sans; font-weight:bold; color:#555;">Please Login</meduim></h1>
+      </div>
+      <form role="form" class="form-login" action="/login" method="post">
+
+          <input type="text" ng-model="username" name="username" class="form-control" id="username" placeholder="User Name" required="required"><br>
+            <input type="password" ng-model="password" name="password" id="password" class="form-control" placeholder="Password" required="required"> <br>
+      <button type="submit" class="btn btn-danger btn-block" ng-click="submit()">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

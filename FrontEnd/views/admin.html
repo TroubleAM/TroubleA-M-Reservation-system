@@ -1,0 +1,46 @@
+<div ng-controller="adminCtrl">
+		<div class="container well col-lg-8 col-lg-offset-2"  ng-init="loadAppointments()" >
+
+      
+<form class="form-inline">
+  <strong style="font-size: 20px; font-family:Open Sans; font-weight:bold; color:#555;">Add appointment:</strong>
+
+         <input class="form-control" type="date" name="date" id="addeddateappointment">
+	         <input class="form-control" type="time" name="time" id="addedtimeappointment">
+	           <button type="submit" class="btn btn-danger" ng-click="addApointment()">Submit</button>
+         </form>
+            <br />
+            <br />             
+               <h2 style="font-size: 30px; font-family:Open Sans; font-weight:bold; color:#555;">Reserved appointments:</h2>
+             <ul>
+               <div ng-repeat="appointment in appointments">
+                 <div class="well" style="background-color: rgba(190,190,190,0.3);">
+                <li>
+                    <h4><b>Date:</b> {{appointment.availableAppointments.date}}</h4>
+                    <h4><b>Time:</b> {{appointment.availableAppointments.time}}</h4>
+                    <h4><b>Patient name:</b> {{appointment.patientName}}</h4>
+                    <h4><b>Patient phone:</b> {{appointment.patientPhone}}</h4>
+                    <h4><b>Patient case:</b> {{appointment.patientCase}}</h4>
+                </li>
+                <input type="text" placeholder="type your reply" id="data"/>
+                <button ng-click="sendReply(appointment.patientName)" class="btn btn-success">Reply</button>
+              </div>
+              </div>
+            </ul>
+            <h2 style="font-size: 30px; font-family:Open Sans; font-weight:bold; color:#555;">Reviews:  <button class="btn btn-success" ng-click="getreviews()"> Getreviews</button></h2>
+            
+            <div  class="well">
+            <ul ng-repeat="reviewe in reviews">
+                <li><h4>{{reviewe}}</h4></li>
+            </ul>
+            
+            </div>
+        </div>
+     
+            
+	 </div>
+                   
+
+
+   
+</div>
