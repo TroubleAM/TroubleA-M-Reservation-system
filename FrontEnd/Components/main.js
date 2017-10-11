@@ -94,21 +94,10 @@ angular.module('app')
         }
       })
     };
-    // "reservedAppointments": [
-    //     {
-    //         "patientName": "ammmmmmmm",
-    //         "patientPhone": "ammmmmmmm",
-    //         "patientCase": "ammmmmmmm",
-    //         "availableAppointments": {
-    //             "time": "01:55",
-    //             "date": "2017-10-10"
-    //         },
-    //         "reply": "go get some hbob"
-    //     }
-    // ]
-    $scope.getReplies=function(name){
-    //function which take the name from the client and post his replies 
-      var doctors=$scope.doctors
+    $scope.getReplies=function(){
+    //function which take the name from the client and post his replies
+      var name= $('#name').val(); 
+      var doctors=$scope.doctors;
       for(var i=0; i<doctors.length;i++){
         var point=doctors[i].reservedAppointments;
         for(var j=0;j<point.length ;j++){
