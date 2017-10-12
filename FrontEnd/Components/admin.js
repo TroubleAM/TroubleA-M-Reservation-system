@@ -3,8 +3,8 @@ angular.module('app')
     .controller('adminCtrl', function($scope, $http) {
         $scope.appointmentDate;
         $scope.appointmentTime;
-		$scope.appointments;
-		$scope.counter = 0;
+        $scope.appointments;
+        $scope.counter = 0;
         $scope.reviews;
 //function send the reply from doctor to patient to server. 
         $scope.sendReply=function(patientName){
@@ -31,7 +31,7 @@ angular.module('app')
             $scope.appointmentDate = $('#addeddateappointment').val();
             $scope.appointmentTime = $('#addedtimeappointment').val();
             // for (var doctor=0 ; doctor < $scope.appointments.length ; doctor++){
-            // 	$scope.username = $scope.appointments[doctor].username;
+            //  $scope.username = $scope.appointments[doctor].username;
             // }
             console.log('+++++++++>', $scope.appointmentDate);
             $.ajax({
@@ -57,9 +57,9 @@ angular.module('app')
                 url: '/getDoctorReservedAppointments',
                 method: 'GET',
                 dataType: 'json',
-								async: false,
+                                async: false,
                 success: function(data) {
-									console.log('++++++++++++++', data);
+                                    console.log('++++++++++++++', data);
                     $scope.appointments = data.reservedAppointments;
                 }
             })
