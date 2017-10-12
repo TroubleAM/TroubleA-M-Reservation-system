@@ -1,19 +1,50 @@
 //defined the module woh will have the controller for all the HTML page
 angular.module('app')
 .controller('AppCtrl', function($scope){
-    $scope.doctors;
+    $scope.doctors = [];
+    $scope.joob;
+    $scope.jobb;
     $scope.currentDoctor;
     $scope.timeA;
     $scope.replies=[];
+    $scope.ttagg=false;
+   
+    
 // load the doctors informations from the database 
-    $scope.loadPage=function (){
+  
+    // $scope.catFn1 = function (e) {
+    //   var sel1 = e.target.getAttribute('data-value');
+    //   sharedService.prepForBroadcast(sel1);
+    //   return dict1(sel1);
+    // }
+
+    $scope.loadPage=function (x){
+      console.log(x,'===============================')
+      if(x !== undefined){
+        $scope.joob=x.target.getAttribute('data-value');
+        console.log($scope.joob,'----------------------------------')
+      }
+      // else{
+      //   $scope.joob =undefined;
+      // }
+      
       $.ajax({
         url:'/getDoctors',
         method:'GET',
         async: false,
         success:function(data){
-          $scope.doctors = data;
-          console.log('docs', $scope.doctors);
+          $scope.jobb = data;
+          console.log('docs', $scope.jobb);
+          if($scope.joob){
+            for(var i=0; i<$scope.jobb.length; i++){
+              if($scope.jobb.job === $scope.joob){
+                $scope.doctors.push($scope.jobb);
+              }
+            }
+          }
+          else{
+            $scope.doctors = $scope.jobb;
+          }
         }
       })
     };
@@ -63,7 +94,7 @@ angular.module('app')
     };
     // when you click on a doctor this function will show the specific doctor  
     $scope.showDoctorAppointments = function (name){
-      var currentDoctors = $scope.doctors;
+      // var currentDoctors = $scope.doctors;
       for (var i = 0; i < currentDoctors.length; i++) {
         if (currentDoctors[i].name === name)
         {
