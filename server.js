@@ -15,7 +15,7 @@ var jwt = require('jwt-simple');
 var multer = require('multer');
 var upload = multer({
     dest: './FrontEnd/uploads/'
-}); //fix this
+}); //fixed
 
 
 app.use(morgan('dev'));
@@ -152,10 +152,9 @@ app.post('/signup', upload.any(), function(req, res) {
         password: req.body.password,
         phoneNumber: req.body.phoneNumber,
         specilization: req.body.specilization,
-        // image: req.files[0].filename,
+        image: req.files[0].filename,
         location:req.body.location
     };
-    console.log(adduser.image);
     var user = new db(adduser);
     user.save()
     .then(item => {
@@ -261,45 +260,6 @@ app.get('/getreviews',function(req,res){
 }) 
 
 
-
- // delete reserved appoinment 
- app.delete('/deleteAppointment' , function (req , res) {
-    /* body... */
-    console.log('***********>>', req.body, req.session.username)
-    var theAppointment = {
-        availableAppointments: req.body.reservedAppointment.availableAppointments,
-        patientName: req.body.reservedAppointment.patientName,
-        patientPhone: req.body.reservedAppointment.patientPhone
-    }
-    req.body.reservedAppointment = theAppointment;
-    console.log('xxxxxxxxxxxxx>', req.body.reservedAppointment)
-    db.update({
-        username: req.session.username
-    }, {
-        $pull: {
-            reservedAppointments: req.body.reservedAppointment
-        }
-    }, function(err, updateUser) {
-        if (err) {
-            console.log(err)
-        } else {
-
-            console.log('pull successfully', updateUser)
-            console.log(updateUser)
-        }
-    });
-}) //if we have time we will fix it
-
-// app.post('/doctorReply',function(req,res){
-//     db.update({username:req.session.username},function(err,data){
-//         if(err){ console.log(err)}
-//         for (var i = 0; i < data.reservedAppointments.length; i++) {
-//             if(data.reservedAppointments[i].patientName === req.body.patientName){
-//                 data.reservedAppointments[i].reply = req.body.reply;
-//             }
-//         }
-//     })
-// })
 
 app.post('/doctorReply', function(req,res){
    db.update({'reservedAppointments.patientName': req.body.patientName},
