@@ -73,9 +73,11 @@ It’s just to connect between the components and the controllers .
 It contains the signup , login , home page and website name and switch between pages if it’s(admin or client)
 
 As Trouble A-M team We added:
+
 1.in the main page the normal user can chose job and filter the showing users from them job
    and when he press on specific user he can send his case and he can also add a feedback if he wants and the user can 
    see the reply from the admins.
+   
 2. in the Admin page the admin can send a reply for the normal user case.
 3.we changed something in design .
 
