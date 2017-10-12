@@ -4,7 +4,7 @@ var Schema=mongoose.Schema;
 
 //database name is "admins".
 
-mongoose.connect('mongodb://reservationSys:no94@ds113935.mlab.com:13935/reservationsys',function(err,data){
+mongoose.connect('mongodb://trouble:trtr@ds117935.mlab.com:17935/troubleam',function(err,data){
 	if(err){
 		console.log(err)
 	}
@@ -38,6 +38,9 @@ var adminsSchema= new Schema({
 		type: String
 	},
 	location:{
+		type:String
+	},
+	job:{
 		type:String
 	},
 	reviews:{

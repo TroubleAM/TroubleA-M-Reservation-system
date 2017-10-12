@@ -50,22 +50,7 @@ app.get('/index', (req, res) => {
 })
 
 
-//add reservedAppoinment 
-// app.post('/reservedappointments', function(req, res) {
 
-//     var patient = {
-//         patientName: req.body.patientName,
-//         phoneNumber: req.body.phoneNumber,
-//     };
-//     var newpatient = new db(patient);
-//     newpatient.save()
-//     .then(item => {
-//         res.send("item saved to database")
-//     })
-//     .catch(err => {
-//         res.status(400).send("unable to save to database")
-//     })
-// });
 
 // get login page 
 app.get('/login', function(req, res) {
@@ -153,8 +138,10 @@ app.post('/signup', upload.any(), function(req, res) {
         phoneNumber: req.body.phoneNumber,
         specilization: req.body.specilization,
         image: req.files[0].filename,
-        location:req.body.location
+        location:req.body.location,
+        job:req.body.job
     };
+    console.log(adduser.image);
     var user = new db(adduser);
     user.save()
     .then(item => {
@@ -258,6 +245,8 @@ app.get('/getreviews',function(req,res){
             res.send(data);
     })
 }) 
+
+
 
 
 
