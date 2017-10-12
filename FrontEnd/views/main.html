@@ -3,7 +3,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Doctor replies on your cases</h4>
+        <h4 class="modal-title" id="exampleModalLabel">Check your replies</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -23,7 +23,7 @@
       </div>
       <div class="modal-body" ng-repeat="reply in replies">
         <ul>
-          <label>Doctor name: {{reply.username}}</label>
+          <label> name: {{reply.username}}</label>
           <br><label>Appointment at: {{reply.availableAppointments.date}} , {{reply.availableAppointments.time}}</label>
           <br><label>Your case: {{reply.patientCase}}</label>
           <br><label>Your reply: {{reply.reply}}</label>
@@ -38,12 +38,12 @@
   </div>
 </div>
 <center>
-    <strong><input type="text" ng-model="search" placeholder="Search on your doctor ....."></strong>
+    <strong><input type="text" ng-model="search" placeholder="Search....."></strong>
     <br>
     <br>
     <!-- Reply button it is here for complete the style when press on it will show the above div -->
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-      Get replies from doctors
+      Check replies 
     </button>
       <style type="text/css">
         input[type=text] {
@@ -65,15 +65,64 @@
 </center>
 <br>
 <br>
+<center>
+<div class="btn-group">
+  
+ <button class="btn btn-success">
+   <a href="#engineer  " ng-click="loadPage($event)" data-value="engineer" data-transition="slidedown" class="ui-btn ui-corner-all">Engineer</a>
+ </button>
+
+
+ <button class="btn btn-success">
+   <a href="#teacher  " ng-click="loadPage($event)" data-value="teacher" data-transition="slidedown" class="ui-btn ui-corner-all">Teacher</a>
+ </button>
+
+
+ <button class="btn btn-success">
+   <a href="#doctor  " ng-click="loadPage($event)" data-value="doctor" data-transition="slidedown" class="ui-btn ui-corner-all">Doctor</a>
+ </button>
+
+
+ <button class="btn btn-success">
+   <a href="#plumber  " ng-click="loadPage($event)" data-value="plumber" data-transition="slidedown" class="ui-btn ui-corner-all">Plumber</a>
+ </button>
+
+
+ <button class="btn btn-success">
+   <a href="#carpenter  " ng-click="loadPage($event)" data-value="carpenter" data-transition="slidedown" class="ui-btn ui-corner-all">Carpenter</a>
+ </button>
+
+
+ <button class="btn btn-success">
+   <a href="#smith  " ng-click="loadPage($event)" data-value="smith" data-transition="slidedown" class="ui-btn ui-corner-all">Smith</a>
+ </button>
+
+
+<button class="btn btn-success">
+   <a href="#chef  " ng-click="loadPage($event)" data-value="chef" data-transition="slidedown" class="ui-btn ui-corner-all">Chef</a>
+ </button>
+
+
+<button class="btn btn-success">
+   <a href="#gillisChildren  " ng-click="loadPage($event)" data-value="gillisChildren" data-transition="slidedown" class="ui-btn ui-corner-all">Gillis children</a>
+ </button>
+
+
+ <br>
+  <br>
+  <br>
+</div>
+</center>
 <div id="mainpage" ng-controller="AppCtrl" ng-init="loadPage()">
    <div style="margin-left: 2em">
-      <div ng-show="true" class="media well well-fuild col-lg-6 col-lg-offset-3 col-md-6 col-sm-12" ng-repeat="doctor in doctors |filter:search">
+      <div ng-show="true" class="media well well-fuild col-lg-6 col-lg-offset-3 col-md-6 col-sm-12" ng-repeat="doctor in doctors |filter:search | filter:joob" ng-show="engineer">
          <div class="media-left media-top">
             <div class="media-left">
                <img ng-src="{{'/uploads/' + doctor.image}}" class="media-object" style="width:80px" data-toggle="modal" data-target="#myAppointments" ng-click="getDoctorData(doctor.username)"/>
             </div>
             <div id="doctorsDiv" class="media-body">
-               <h1 class="media-heading">Doctor: {{doctor.username}}</h1>
+               <h1 class="media-heading">{{doctor.job}}: {{doctor.username}}</h1>
+
                <h4>
                   Phone: {{doctor.phoneNumber}}
                </h4>
@@ -82,6 +131,9 @@
                </h4>
                <h4>
                   Location: {{doctor.location}}
+               </h4>
+               <h4>
+                  Job: {{doctor.job}}
                </h4>
             </div>
          </div>
@@ -99,7 +151,7 @@
                <img ng-src="{{'/uploads/' + currentDoctor.image}}" class="media-object" style="width:80px" data-toggle="modal" data-target="#myAppointments"/>
              </div>
              <div class="media-body">
-               <h1 class="media-heading">Doctor: {{currentDoctor.username}}</h1>
+               <h1 class="media-heading">{{currentDoctor.job}}: {{currentDoctor.username}}</h1>
                <p>
                  Phone: {{currentDoctor.phoneNumber}}
                </p>
@@ -108,6 +160,9 @@
                </p>
                <p>
                  Location: {{currentDoctor.location}}
+               </p>
+               <p>
+                 Job: {{currentDoctor.job}}
                </p>
                <div class="row">
                  <div class="col-lg-8">
@@ -151,3 +206,20 @@
    </div>
    <!-- </div><button ng-click="loadPage()" class="btn btn-danger">GetDoctors</button></div> -->
 </div>
+<style>
+  .btn-success{
+    background-color: rgba(255, 41, 98, 1); 
+    color:white;
+    font-weight: bold;
+  }
+  a{
+    color: white;
+  }
+  a:hover{
+    color: pink;
+  }
+  .btn-success:hover{
+    background-color: blue;
+    color: white;
+  }
+</style>
