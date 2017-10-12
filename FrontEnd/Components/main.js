@@ -140,7 +140,9 @@ angular.module('app')
                 reply: point[j].reply,
                 username: doctors[i].username
               };
+               if(!$scope.replies.length){
               $scope.replies.push(reply);
+          }
           }
         }
       }
